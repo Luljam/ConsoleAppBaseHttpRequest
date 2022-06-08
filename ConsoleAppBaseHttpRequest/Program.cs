@@ -3,21 +3,21 @@ using ConsoleAppBaseHttpRequest.Services.Integration;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace ConsoleAppBaseHttpRequest
 {
     internal class Program : BaseHttpRequest
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            //creating object of program class to access methods
-            SoapRequest(2);
+           await SoapRequest(2);
             RestRequest();
 
             Console.Read();
         }
 
-        public static void SoapRequest(int number)
+        public static async Task SoapRequest(int number)
         {
             HttpBodyRequest request = new HttpBodyRequest
             {
@@ -37,8 +37,9 @@ namespace ConsoleAppBaseHttpRequest
 
 
             Service service = new Service();
+            IHttpProtocol httpSoap = new SoapProtocol();
             //var soap = new SoapProtocol();
-            var response = service.SendCommand(request);
+            var response = await service.SendCommand(request, httpSoap);
 
             //var response = soap.HttpRequest(request);
             Console.WriteLine("\n Response Soap");

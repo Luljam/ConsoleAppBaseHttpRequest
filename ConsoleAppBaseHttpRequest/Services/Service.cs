@@ -9,9 +9,8 @@ namespace ConsoleAppBaseHttpRequest.Services
 {
     public class Service : IService
     {
-        public string SendCommand(HttpBodyRequest request)
+        public async Task<string> SendCommand(HttpBodyRequest request, IHttpProtocol httpSoap)
         {
-            IHttpProtocol httpSoap = new SoapProtocol();
             HttpIntegration integrationSoap = new HttpIntegration(httpSoap);
 
             return integrationSoap.DoBusinessLogic(request);

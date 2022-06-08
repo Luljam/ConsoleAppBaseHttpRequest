@@ -8,7 +8,7 @@ namespace ConsoleAppBaseHttpRequest.Services.Integration
 {
     public sealed class HttpIntegration
     {
-        IHttpProtocol _httpProtocol;
+        readonly IHttpProtocol _httpProtocol;
 
         public HttpIntegration(IHttpProtocol httpProtocol)
         {
