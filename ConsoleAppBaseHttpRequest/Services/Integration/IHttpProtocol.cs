@@ -8,6 +8,6 @@ namespace ConsoleAppBaseHttpRequest.Services.Integration
 {
     public interface IHttpProtocol
     {
-        string HttpRequest(HttpBodyRequest httpBodyRequest);
+        Task<string> HttpRequest(HttpBodyRequest httpBodyRequest);
     }
 }

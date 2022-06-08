@@ -13,7 +13,7 @@ namespace ConsoleAppBaseHttpRequest.Services
         {
             HttpIntegration integrationSoap = new HttpIntegration(httpSoap);
 
-            return integrationSoap.DoBusinessLogic(request);
+            return await integrationSoap.DoBusinessLogic(request);
         }
     }
 }

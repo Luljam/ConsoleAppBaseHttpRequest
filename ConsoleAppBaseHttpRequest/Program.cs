@@ -12,7 +12,7 @@ namespace ConsoleAppBaseHttpRequest
         static async Task Main(string[] args)
         {
            await SoapRequest(2);
-            RestRequest();
+           await RestRequest();
 
             Console.Read();
         }
@@ -46,7 +46,7 @@ namespace ConsoleAppBaseHttpRequest
             Console.WriteLine(response);
         }
 
-        public static void RestRequest()
+        public static async Task RestRequest()
         {
             try
             {
@@ -60,7 +60,7 @@ namespace ConsoleAppBaseHttpRequest
                 };
 
                 var rest = new RestProtocol();
-                var response = rest.HttpRequest(request);
+                var response = await rest.HttpRequest(request);
 
                 Console.WriteLine("\n Response Rest");
                 Console.WriteLine(response);

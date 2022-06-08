@@ -15,9 +15,9 @@ namespace ConsoleAppBaseHttpRequest.Services.Integration
             _httpProtocol = httpProtocol;
         }
 
-        public string DoBusinessLogic(HttpBodyRequest request)
+        public async Task<string> DoBusinessLogic(HttpBodyRequest request)
         {
-            return _httpProtocol.HttpRequest(request);
+            return await _httpProtocol.HttpRequest(request);
         }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ConsoleAppBaseHttpRequest.Services.Integration
 {
     public sealed class SoapProtocol : BaseHttpRequest, IHttpProtocol
     {
-        public string HttpRequest(HttpBodyRequest httpBodyRequest)
+        public async Task<string> HttpRequest(HttpBodyRequest httpBodyRequest)
         {
             //WebRequest request = WebRequest.Create(httpBodyRequest.Url);
             //request.Method = httpBodyRequest.Method;
@@ -39,7 +40,7 @@ namespace ConsoleAppBaseHttpRequest.Services.Integration
                     var responseContent = response.Content;
 
                     // by calling .Result you are synchronously reading the result
-                    responseString = responseContent.ReadAsStringAsync().Result;
+                    responseString = await responseContent.ReadAsStringAsync();
                 }
             }
 
